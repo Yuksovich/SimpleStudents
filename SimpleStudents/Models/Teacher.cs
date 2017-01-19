@@ -8,6 +8,10 @@ namespace SimpleStudents.Models
 {
     public class Teacher:Person
     {
-        
+        public Teacher()
+        {
+            base.Position = Role.Teacher;
+        }
+        public Course TeachingCourse { get; set; }
     }
 }
