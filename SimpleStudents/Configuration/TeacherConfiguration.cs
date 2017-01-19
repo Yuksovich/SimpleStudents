@@ -14,7 +14,7 @@ namespace SimpleStudents.Configuration
             ToTable("Teachers");
             Property(g => g.FirstName).IsRequired().HasMaxLength(100);
             Property(g => g.LastName).IsRequired().HasMaxLength(100);
-            Property(g => g.TeachingCourse.Name).IsRequired();
+           // Property(g => g.TeachingCourse.Name).IsRequired();
         }
     }
 }

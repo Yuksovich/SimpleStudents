@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SimpleStudents.Models
+namespace SimpleStudents.Domain
 {
-    public class Student : User
+    public class Student : Person
     {
         public Student()
         {
             base.Position = Role.Student;
         }
-        public IEnumerable<Course> StudyingCources { get; set; }
-       
+        //public List<Course> VisitingCourses { get; set; }
+        
     }
 }

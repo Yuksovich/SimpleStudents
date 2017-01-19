@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SimpleStudents.Models;
 
 namespace SimpleStudents.Controllers
 {
@@ -10,7 +11,14 @@ namespace SimpleStudents.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var context = new UniversityContext())
+            {
+
+                var student = new Student() {FirstName = "John", LastName = "Doe", PersonId = 123};
+                context.Students.Add(student);
+                context.SaveChanges();
+                return Content("Yes");
+            }
         }
 
         public ActionResult About()

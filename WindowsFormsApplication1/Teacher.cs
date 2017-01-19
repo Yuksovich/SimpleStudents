@@ -4,14 +4,14 @@ using System.Dynamic;
 using System.Linq;
 using System.Web;
 
-namespace SimpleStudents.Models
+namespace SimpleStudents.Domain
 {
-    public class Teacher:User
+    public class Teacher:Person
     {
         public Teacher()
         {
             base.Position = Role.Teacher;
         }
-        public IEnumerable<Course> TeachingCourse { get; set; }
+        public Course TeachingCourse { get; set; }
     }
 }

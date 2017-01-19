@@ -9,6 +9,15 @@ namespace SimpleStudents.Models
     {
         public string Name { get; set; }
         public Teacher Teacher { get; set; }
-        public IDictionary<Student, int> Students { get; set; }
+        public IEnumerable<Student> Students { get; set; }
+    }
+
+    public enum CourseNames
+    {
+        Math,
+        Geometry,
+        Physics,
+        English,
+        Russian
     }
 }
