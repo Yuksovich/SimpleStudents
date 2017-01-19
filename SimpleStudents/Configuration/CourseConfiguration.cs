@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
+using SimpleStudents.Domain;
 using SimpleStudents.Models;
 
 namespace SimpleStudents.Configuration

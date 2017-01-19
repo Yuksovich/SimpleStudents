@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SimpleStudents.Domain
 {
-     public abstract class Person
+     public abstract class User:EntityBase
     {
         public int PersonId { get; set; }
         public string FirstName { get; set; }

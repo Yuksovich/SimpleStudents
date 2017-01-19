@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SimpleStudents.Domain;
 using SimpleStudents.Models;
 
 namespace SimpleStudents.Controllers
@@ -14,7 +15,7 @@ namespace SimpleStudents.Controllers
             using (var context = new UniversityContext())
             {
 
-                var student = new Student() {FirstName = "John", LastName = "Doe", PersonId = 123};
+                var student = new Student() {FirstName = "John", LastName = "Doe"};
                 context.Students.Add(student);
                 context.SaveChanges();
                 return Content("Yes");

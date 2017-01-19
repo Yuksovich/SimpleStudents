@@ -5,13 +5,14 @@ using System.Web;
 
 namespace SimpleStudents.Domain
 {
-    public class Student : Person
+    public class Student : User
     {
         public Student()
         {
             base.Position = Role.Student;
         }
-        //public List<Course> VisitingCourses { get; set; }
-        
+
+        public IEnumerable<Course> AttendedCourses { get; set; }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using SimpleStudents.Configuration;
+using SimpleStudents.Domain;
 using SimpleStudents.Models;
 
 namespace SimpleStudents

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SimpleStudents.Domain
 {
-    public class Teacher:Person
+    public class Teacher:User
     {
         public Teacher()
         {
