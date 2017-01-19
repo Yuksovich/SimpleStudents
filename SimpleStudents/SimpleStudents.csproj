@@ -254,7 +254,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApplication1\SimpleStudents.Domain.csproj">
+    <ProjectReference Include="..\SimpleStudents.Domain\SimpleStudents.Domain.csproj">
       <Project>{02b41abe-2b3f-4937-a218-6083d8fee820}</Project>
       <Name>SimpleStudents.Domain</Name>
     </ProjectReference>
