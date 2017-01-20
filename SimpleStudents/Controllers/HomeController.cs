@@ -15,10 +15,10 @@ namespace SimpleStudents.Controllers
             using (var context = new UniversityContext())
             {
 
-                var student = new Student() {FirstName = "John", LastName = "Doe"};
-                context.Students.Add(student);
-                context.SaveChanges();
-                return Content("Yes");
+                //var student = new StudentModel() {FirstName = "John", LastName = "Doe"};
+                //context.Students.Add(student);
+                //context.SaveChanges();
+                return View();
             }
         }
 

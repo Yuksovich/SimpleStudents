@@ -12,7 +12,6 @@ namespace SimpleStudents.Domain
             base.Position = Role.Student;
         }
 
-        public IEnumerable<Course> AttendedCourses { get; set; }
-
+        public List<Description> Descriptions { get; set; }
     }
 }

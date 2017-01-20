@@ -12,6 +12,6 @@ namespace SimpleStudents.Domain
         {
             base.Position = Role.Teacher;
         }
-        public Course TeachingCourse { get; set; }
+        public IEnumerable<Course> TeachingCourses { get; set; }
     }
 }

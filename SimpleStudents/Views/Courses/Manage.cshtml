@@ -1,0 +1,33 @@
+﻿@using Microsoft.Ajax.Utilities
+@using SimpleStudents.Models
+@model IEnumerable<SimpleStudents.Models.CourseModel>
+
+<h2>Create new Course</h2>
+@if (ViewBag.Title != null)
+{
+    <h3>Course @ViewBag.Title added to database</h3>
+}
+
+<div class="courses">
+    <table>
+        
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.Name</td>
+                    <td>@course.TeacherFirsName</td>
+                    <td>@course.TeacherLastName</td>
+                </tr>
+            }
+        
+    </table>
+</div>
+
+
+
+@*@using (Html.BeginForm())
+{
+    <p>Enter course name: @Html.TextBoxFor(x =>x.Name)</p>
+    <p/>
+    <input type="submit" value="Add course to database"/>
+}*@
