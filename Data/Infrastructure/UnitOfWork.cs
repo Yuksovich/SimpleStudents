@@ -21,7 +21,7 @@ namespace Data.Infrastructure
 
         public void Commit()
         {
-
+            _dbContext.SaveChanges();
         }
     }
 }

@@ -10,27 +10,21 @@ namespace Data.Infrastructure
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : class, IEntity
     {
-        private UniversityContext _universityContext;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbContext context;
 
-        protected DbFactory DbFactory { get; private set; }
-
-        protected UniversityContext DbContext => _universityContext ?? (_universityContext = DbFactory.Init());
-
-        protected RepositoryBase(DbFactory dbFactory)
+        protected RepositoryBase(DbContext dbContext)
         {
-            DbFactory = dbFactory;
-            _dbSet = DbContext.Set<T>();
+            context = dbContext;
         }
 
         public void Add(T entity)
         {
-            _dbSet.Add(entity);
+            context.Set<T>().Add(entity);
         }
 
         public void Delete(Expression<Func<T, bool>> where)
         {
-            var enumerable = _dbSet.Where(where).AsEnumerable();
+            var enumerable = context.Set<T>().Where(where).AsEnumerable();
             foreach (var entity in enumerable)
             {
                 Delete(entity);
@@ -39,23 +33,23 @@ namespace Data.Infrastructure
 
         public void Delete(T entity)
         {
-            _dbSet.Remove(entity);
+            context.Set<T>().Remove(entity);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet.ToList();
+            return context.Set<T>().ToList();
         }
 
         public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
-            return _dbSet.Where(where).AsEnumerable();
+            return context.Set<T>().Where(where).AsEnumerable();
         }
 
         public void Update(T entity)
         {
-            _dbSet.Attach(entity);
-            _universityContext.Entry(entity).State = EntityState.Modified;
+            context.Set<T>().Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

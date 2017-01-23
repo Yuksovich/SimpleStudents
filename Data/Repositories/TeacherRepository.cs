@@ -9,12 +9,13 @@ using SimpleStudents.Domain;
 
 namespace Data.Repositories
 {
-    public interface ICourseRepository : IRepository<Course>
+    public interface ITeacherRepository : IRepository<Teacher>
     {
+
     }
 
-    public class CourseRepository : RepositoryBase<Course>, ICourseRepository
+    public class TeacherRepository : RepositoryBase<Teacher>, ITeacherRepository
     {
-        public CourseRepository(DbContext dbContext) : base(dbContext) { }
+        public TeacherRepository(DbContext dbContext) : base(dbContext) { }
     }
 }
