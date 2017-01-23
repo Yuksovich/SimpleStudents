@@ -50,7 +50,6 @@ namespace SimpleStudents.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Int = c.Int(nullable: false),
                         FirstName = c.String(),
                         LastName = c.String(),
                         Position = c.Int(nullable: false),

@@ -12,6 +12,6 @@ namespace SimpleStudents.Domain
             base.Position = Role.Student;
         }
 
-        public List<Description> Descriptions { get; set; }
+        public IList<Description> Descriptions { get; set; }
     }
 }

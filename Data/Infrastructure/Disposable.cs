@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace SimpleStudents.Infrastructure
+namespace Data.Infrastructure
 {
     public class Disposable : IDisposable
     {
-        private bool isDidposed;
+        private bool _isDisposed;
 
         ~Disposable()
         {
@@ -22,16 +19,16 @@ namespace SimpleStudents.Infrastructure
 
         private void Dispose(bool disposing)
         {
-            if (!isDidposed && disposing)
+            if (!_isDisposed && disposing)
             {
                 DisposeCore();
             }
-            isDidposed = true;
+
+            _isDisposed = true;
         }
 
         protected virtual void DisposeCore()
         {
-            
         }
     }
 }

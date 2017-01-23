@@ -13,18 +13,11 @@ namespace SimpleStudents.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            var coursesList = new List<CourseModel>();
             var courses = _context.Courses.ToArray();
-            foreach (var course in courses)
+            var coursesList = courses.Select(c => new CourseModel()
             {
-                coursesList.Add(new CourseModel()
-                {
-                    Name = course.Name,
-                    TeacherId = course.Teacher.Id,
-                    TeacherFirsName = course.Teacher.FirstName,
-                    TeacherLastName = course.Teacher.LastName
-                });
-            }
+                Name = c.Name
+            });
             return View(coursesList);
         }
         

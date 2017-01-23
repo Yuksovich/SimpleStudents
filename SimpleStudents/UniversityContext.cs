@@ -4,8 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
-using SimpleStudents.Configuration;
 using SimpleStudents.Domain;
+using SimpleStudents.Domain.EntityConfiguration;
 
 namespace SimpleStudents
 {
@@ -17,9 +17,18 @@ namespace SimpleStudents
         }
 
         public DbSet<Student> Students { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<Description> Description { get; set; }
-        
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Description> Descriptions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CourseConfiguration());
+            modelBuilder.Configurations.Add(new StudentConfiguration());
+            modelBuilder.Configurations.Add(new TeacherConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
+

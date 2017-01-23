@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents.Data", "Data\SimpleStudents.Data.csproj", "{F6930A3E-2262-46AF-8205-72D34C618BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStuedents.Services", "SimpleStuedents.Services\SimpleStuedents.Services.csproj", "{B3C5DE48-EAFF-4F93-9F76-35F53B236755}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		12|Any CPU = 12|Any CPU
@@ -32,6 +36,18 @@ Global
 		{02B41ABE-2B3F-4937-A218-6083D8FEE820}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B41ABE-2B3F-4937-A218-6083D8FEE820}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02B41ABE-2B3F-4937-A218-6083D8FEE820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.12|Any CPU.ActiveCfg = Release|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.12|Any CPU.Build.0 = Release|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6930A3E-2262-46AF-8205-72D34C618BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.12|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.12|Any CPU.Build.0 = Release|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C5DE48-EAFF-4F93-9F76-35F53B236755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,12 +6,12 @@ using System.Web;
 
 namespace SimpleStudents.Domain
 {
-    public class Teacher:User
+    public class Teacher : User
     {
         public Teacher()
         {
             base.Position = Role.Teacher;
         }
-        public IEnumerable<Course> TeachingCourses { get; set; }
+        public IList<Course> TeachingCourses { get; set; }
     }
 }

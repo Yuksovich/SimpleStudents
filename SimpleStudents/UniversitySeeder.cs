@@ -22,7 +22,7 @@ namespace SimpleStudents
                 context.Courses.Add(course);
             }
             context.SaveChanges();
-            base.Seed(context);
+                base.Seed(context);
         }
     }
 }
