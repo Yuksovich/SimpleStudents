@@ -10,6 +10,6 @@ namespace Data.Repositories
 
     public class TeacherRepository : RepositoryBase<Teacher>, ITeacherRepository
     {
-        public TeacherRepository(UniversityContext dbContext) : base(dbContext) { }
+        public TeacherRepository(IDbFactory dbFactory) : base(dbFactory) { }
     }
 }

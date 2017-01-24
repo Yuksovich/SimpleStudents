@@ -1,4 +1,4 @@
-﻿namespace SimpleStudents.Models
+﻿namespace SimpleStudents.Web.Models
 {
     public class CourseModel
     {

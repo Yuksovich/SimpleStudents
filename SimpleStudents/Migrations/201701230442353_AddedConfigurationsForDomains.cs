@@ -1,8 +1,7 @@
-namespace SimpleStudents.Migrations
+using System.Data.Entity.Migrations;
+
+namespace SimpleStudents.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-        
     public partial class AddedConfigurationsForDomains : DbMigration
     {
         public override void Up()

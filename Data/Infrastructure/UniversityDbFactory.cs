@@ -1,12 +1,13 @@
-﻿using SimpleStudents;
+﻿using System.Data.Entity;
+using SimpleStudents;
 
 namespace Data.Infrastructure
 {
-    public class DbFactory : Disposable, IDbFactory
+    public class UniversityDbFactory : Disposable, IDbFactory
     {
         private UniversityContext _dbContext;
 
-        public UniversityContext Init()
+        public DbContext Init()
         {
             return _dbContext ?? (_dbContext = new UniversityContext());
         }

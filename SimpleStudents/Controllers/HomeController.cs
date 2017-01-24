@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using SimpleStudents.Domain;
-using SimpleStudents.Models;
+﻿using System.Web.Mvc;
+using Data.Infrastructure;
 
-namespace SimpleStudents.Controllers
+namespace SimpleStudents.Web.Controllers
 {
     public class HomeController : Controller
     {

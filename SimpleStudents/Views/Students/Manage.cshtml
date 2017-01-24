@@ -1,12 +1,7 @@
-﻿@using SimpleStudents.Domain
-@model SimpleStudents.Models.StudentModel
-
-
-
+﻿@model SimpleStudents.Web.Models.StudentModel
 
 <h2>Add new student</h2>
 <div class="form">
-
     @using (Html.BeginForm())
     {
         <p>First Name: @Html.TextBoxFor(x => x.FirstName)</p>
@@ -15,5 +10,4 @@
         <p/>
         <input type="submit" value="Add student to database"/>
     }
-
 </div>

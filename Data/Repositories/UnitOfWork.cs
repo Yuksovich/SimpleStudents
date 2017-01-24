@@ -1,21 +1,19 @@
-﻿using Data.Infrastructure;
-using SimpleStudents;
+﻿using System.Data.Entity;
+using Data.Infrastructure;
 
 namespace Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly UniversityContext _context;
-        public ICourseRepository Courses { get; private set; }
-        public ITeacherRepository Teachers { get; private set; }
-        public IStudentsRepository Students { get; private set; }
+        private readonly DbContext _context;
 
-        public UnitOfWork(UniversityContext context)
+        public ICourseRepository Courses { get; set; }
+        public ITeacherRepository Teachers { get; set; }
+        public IStudentsRepository Students { get; set; }
+
+        public UnitOfWork(IDbFactory dbFactory)
         {
-            _context = context;
-            Courses = new CourseRepository(context);
-            Teachers = new TeacherRepository(context);
-            Students = new StudentsRepository(context);
+            _context = dbFactory.Init();
         }
 
         public void Commit()

@@ -11,9 +11,9 @@ namespace Data.Infrastructure
     {
         protected readonly DbContext Context;
 
-        protected RepositoryBase(DbContext dbContext)
+        protected RepositoryBase(IDbFactory dbFactory)
         {
-            Context = dbContext;
+            Context = dbFactory.Init();
         }
 
         public void Add(T entity)

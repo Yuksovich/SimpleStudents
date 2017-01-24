@@ -1,19 +1,17 @@
-namespace SimpleStudents.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
+using Data.Infrastructure;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SimpleStudents.UniversityContext>
+namespace SimpleStudents.Web.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<UniversityContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SimpleStudents.UniversityContext";
+            ContextKey = "UniversityContext";
         }
 
-        protected override void Seed(SimpleStudents.UniversityContext context)
+        protected override void Seed(UniversityContext context)
         {
             //  This method will be called after migrating to the latest version.
 

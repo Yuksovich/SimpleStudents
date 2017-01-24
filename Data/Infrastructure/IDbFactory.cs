@@ -1,10 +1,10 @@
 ﻿using System;
-using SimpleStudents;
+using System.Data.Entity;
 
 namespace Data.Infrastructure
 {
     public interface IDbFactory : IDisposable
     {
-        UniversityContext Init();
+        DbContext Init();
     }
 }

@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleStudents</RootNamespace>
-    <AssemblyName>SimpleStudents</AssemblyName>
+    <RootNamespace>SimpleStudents.Web</RootNamespace>
+    <AssemblyName>SimpleStudents.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -50,6 +50,18 @@
     </Reference>
     <Reference Include="Autofac, Version=4.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.3.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.4.0.0\lib\net451\Autofac.Integration.Mvc.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.4.0.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -204,8 +216,6 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="UniversityContext.cs" />
-    <Compile Include="UniversitySeeder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -291,12 +301,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleStudents.Domain\SimpleStudents.Domain.csproj">
-      <Project>{02b41abe-2b3f-4937-a218-6083d8fee820}</Project>
-      <Name>SimpleStudents.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201701221201366_InitialCreate.resx">
       <DependentUpon>201701221201366_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +310,20 @@
     <EmbeddedResource Include="Migrations\201701230442353_AddedConfigurationsForDomains.resx">
       <DependentUpon>201701230442353_AddedConfigurationsForDomains.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\SimpleStudents.Data.csproj">
+      <Project>{f6930a3e-2262-46af-8205-72d34c618bac}</Project>
+      <Name>SimpleStudents.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStudents.Domain\SimpleStudents.Domain.csproj">
+      <Project>{02b41abe-2b3f-4937-a218-6083d8fee820}</Project>
+      <Name>SimpleStudents.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStuedents.Services\SimpleStuedents.Services.csproj">
+      <Project>{b3c5de48-eaff-4f93-9f76-35f53b236755}</Project>
+      <Name>SimpleStuedents.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,9 +5,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SimpleStudents.Models;
+using SimpleStudents.Web.Models;
 
-namespace SimpleStudents.Controllers
+namespace SimpleStudents.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller

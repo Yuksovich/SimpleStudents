@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace SimpleStudents
+namespace SimpleStudents.Web
 {
     public class BundleConfig
     {

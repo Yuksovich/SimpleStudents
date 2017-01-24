@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 using SimpleStudents.Domain;
 
-namespace SimpleStudents
+namespace Data.Infrastructure
 {
     public class UniversitySeeder : DropCreateDatabaseIfModelChanges<UniversityContext>
     {

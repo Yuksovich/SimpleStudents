@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Web;
+﻿using System.Data.Entity;
 using SimpleStudents.Domain;
 using SimpleStudents.Domain.EntityConfiguration;
 
-namespace SimpleStudents
+namespace Data.Infrastructure
 {
     public class UniversityContext : DbContext
     {
@@ -28,7 +23,6 @@ namespace SimpleStudents
             modelBuilder.Configurations.Add(new TeacherConfiguration());
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
 

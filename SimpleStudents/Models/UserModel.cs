@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SimpleStudents.Models
+namespace SimpleStudents.Web.Models
 {
     public abstract class UserModel
     {

@@ -12,14 +12,14 @@ namespace Data.Repositories
 
     public class StudentsRepository : RepositoryBase<Student>, IStudentsRepository
     {
-        public StudentsRepository(UniversityContext dbContext) : base(dbContext)
+        public StudentsRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
 
         public IEnumerable<Student> GetAllStudentsPaging(int pageIndex, int pageSize = 10)
         {
             return
-                UniversityContext.Students.OrderBy(s => s.LastName)
+                UniversityContext?.Students.OrderBy(s => s.LastName)
                     .ThenBy(s => s.FirstName)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize);

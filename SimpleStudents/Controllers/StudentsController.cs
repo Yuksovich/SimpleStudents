@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using SimpleStudents.Models;
+﻿using System.Web.Mvc;
+using Data.Infrastructure;
+using SimpleStudents.Web.Models;
 
-namespace SimpleStudents.Controllers
+namespace SimpleStudents.Web.Controllers
 {
     public class StudentsController : Controller
     {

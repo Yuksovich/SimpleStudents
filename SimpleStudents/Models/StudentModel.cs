@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SimpleStudents.Domain;
 
-namespace SimpleStudents.Models
+namespace SimpleStudents.Web.Models
 {
     public class StudentModel : UserModel
     {
