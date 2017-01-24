@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
+using SimpleStudents;
 using SimpleStudents.Domain;
 
 namespace Data.Repositories
@@ -15,6 +10,6 @@ namespace Data.Repositories
 
     public class CourseRepository : RepositoryBase<Course>, ICourseRepository
     {
-        public CourseRepository(DbContext dbContext) : base(dbContext) { }
+        public CourseRepository(UniversityContext dbContext) : base(dbContext) { }
     }
 }

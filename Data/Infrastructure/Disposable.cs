@@ -23,7 +23,6 @@ namespace Data.Infrastructure
             {
                 DisposeCore();
             }
-
             _isDisposed = true;
         }
 

@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using SimpleStudents;
 using SimpleStudents.Domain;
 
 namespace Data.Infrastructure
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : class, IEntity
     {
-        protected readonly DbContext context;
+        protected readonly DbContext Context;
 
         protected RepositoryBase(DbContext dbContext)
         {
-            context = dbContext;
+            Context = dbContext;
         }
 
         public void Add(T entity)
         {
-            context.Set<T>().Add(entity);
+            Context.Set<T>().Add(entity);
         }
 
         public void Delete(Expression<Func<T, bool>> where)
         {
-            var enumerable = context.Set<T>().Where(where).AsEnumerable();
+            var enumerable = Context.Set<T>().Where(where).AsEnumerable();
             foreach (var entity in enumerable)
             {
                 Delete(entity);
@@ -33,23 +32,28 @@ namespace Data.Infrastructure
 
         public void Delete(T entity)
         {
-            context.Set<T>().Remove(entity);
+            Context.Set<T>().Remove(entity);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return context.Set<T>().ToList();
+            return Context.Set<T>().ToList();
+        }
+
+        public T Get(int id)
+        {
+            return Context.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
-            return context.Set<T>().Where(where).AsEnumerable();
+            return Context.Set<T>().Where(where).AsEnumerable();
         }
 
         public void Update(T entity)
         {
-            context.Set<T>().Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+            Context.Set<T>().Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

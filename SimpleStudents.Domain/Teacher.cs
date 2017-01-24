@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace SimpleStudents.Domain
 {
@@ -12,6 +8,7 @@ namespace SimpleStudents.Domain
         {
             base.Position = Role.Teacher;
         }
+
         public IList<Course> TeachingCourses { get; set; }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents", "SimpleStudents\SimpleStudents.csproj", "{FD2072BF-D8BE-4D25-96C6-8D91C34A6A9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents.Web", "SimpleStudents\SimpleStudents.Web.csproj", "{FD2072BF-D8BE-4D25-96C6-8D91C34A6A9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents.Domain", "SimpleStudents.Domain\SimpleStudents.Domain.csproj", "{02B41ABE-2B3F-4937-A218-6083D8FEE820}"
 EndProject

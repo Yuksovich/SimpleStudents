@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SimpleStudents.Models
+﻿namespace SimpleStudents.Models
 {
     public class CourseModel
     {
