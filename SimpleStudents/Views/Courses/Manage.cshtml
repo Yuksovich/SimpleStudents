@@ -1,35 +1,36 @@
-﻿@model IEnumerable<SimpleStudents.Domain.Course>
+﻿@model SimpleStudents.Web.Models.Courses.CourseManagementModel
 
 @{
     ViewBag.Title = "Courses management";
 }
+
+<h2>Manage</h2>
+
 <div class="courses">
     <table>
-        
-            @foreach (var course in Model)
+
+        @foreach (var courseModel in Model.Courses)
             {
-                <tr>
-                    
-                    <td>@(course.Name)</td>
-                    <td>@(course.Teacher?.FirstName)</td>
-                    <td>@(course.Teacher?.LastName)</td>
-                </tr>
-            }
-        
+            <tr>
+                <td>@(courseModel.Name)</td>
+                <td>@(courseModel.TeacherFirsName)</td>
+                <td>@(courseModel.TeacherLastName)</td>
+            </tr>
+        }
     </table>
 </div>
-    
-<form method="post" action="">
-    <p/>
-    <h2>Input course</h2>
-    <input type="text" name="Name"/>
 
-    <input type="submit" value="Отправить"/>
+<form method="post" action="">
+    <p />
+    <h2>Input course</h2>
+    <input type="text" name="Name" />
+
+    <input type="submit" value="Add new course" />
 </form>
 
 @*@using (Html.BeginForm())
-{
-    <p>Enter course name: @Html.TextBoxFor(x =>x.Name)</p>
-    <p/>
-    <input type="submit" value="Add course to database"/>
-}*@
+    {
+        <p>Enter course name: @Html.TextBoxFor(x =>x.Name)</p>
+        <p/>
+        <input type="submit" value="Add course to database"/>
+    }*@
