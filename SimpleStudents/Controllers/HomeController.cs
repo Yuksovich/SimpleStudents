@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Data.Infrastructure;
 
 namespace SimpleStudents.Web.Controllers
 {
@@ -7,14 +6,7 @@ namespace SimpleStudents.Web.Controllers
     {
         public ActionResult Index()
         {
-            using (var context = new UniversityContext())
-            {
-
-                //var student = new StudentModel() {FirstName = "John", LastName = "Doe"};
-                //context.Students.Add(student);
-                //context.SaveChanges();
-                return View();
-            }
+            return View();
         }
 
         public ActionResult About()
