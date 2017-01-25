@@ -8,7 +8,6 @@ namespace SimpleStudents.Domain
         {
             base.Position = Role.Teacher;
         }
-
-        public IList<Course> TeachingCourses { get; set; }
+        public IList<TeacherCourse> TeacherCourses { get; set; }
     }
 }
