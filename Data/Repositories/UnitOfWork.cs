@@ -7,10 +7,6 @@ namespace Data.Repositories
     {
         private readonly DbContext _context;
 
-        public ICourseRepository Courses { get; set; }
-        public ITeacherRepository Teachers { get; set; }
-        public IStudentsRepository Students { get; set; }
-
         public UnitOfWork(IDbFactory dbFactory)
         {
             _context = dbFactory.Init();
