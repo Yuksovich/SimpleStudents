@@ -1,0 +1,42 @@
+﻿@model SimpleStudents.Web.Models.Teachers.TeacherManagementModel
+
+@{
+    ViewBag.Title = "Manage Teachers";
+}
+
+<h2>Manage</h2>
+
+<div class="teachers">
+    <table>
+
+        @foreach (var teacherModel in Model.Teachers)
+            {
+            <tr>
+                <td>@(teacherModel.FirstName)</td>
+                <td>@(teacherModel.LastName)</td>
+                <td>
+                    @if (teacherModel?.Courses != null)
+                    {
+                        foreach (var course in teacherModel?.Courses)
+                        {
+                            <p>@(course?.Name)</p>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<form method="post" action="">
+    <p />
+    <h2>Add new teacher</h2>
+    <input type="text" name="FirstName" />
+    <input type="text" name="LastName" />
+    @foreach (var course in Model.Courses)
+    {
+        <p /><input type="checkbox" name="CourseIds" value="@course.Id" /><label>@course.Name</label>
+    }
+    <input type="submit" value="Add new teacher" />
+</form>
