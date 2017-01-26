@@ -17,50 +17,45 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            var managementModel = new TeacherManagementModel()
+            var teachers = Teachers.GetAll();
+            var teacherModelList = new List<TeacherModel>();
+            foreach (var teacher in teachers)
             {
-                Courses = new List<CourseModel>(),
-                Teachers = new List<TeacherModel>()
-            };
-
-            foreach (var course in Courses.GetAll())
-            {
-                managementModel.Courses.Add(new CourseModel()
-                {
-                    Name = course.Name,
-                    Id = course.Id
-                });
-            }
-
-            foreach (var teacher in Teachers.GetAll())
-            {
-                managementModel.Teachers.Add(new TeacherModel()
+                var teacherModel = new TeacherModel()
                 {
                     FirstName = teacher.FirstName,
                     LastName = teacher.LastName,
-                    Id = teacher.Id
-                });
+                    Courses = new List<CourseModel>()
+                };
+                foreach (var teacherCourse in teacher.TeacherCourses)
+                {
+                    teacherModel.Courses.Add(new CourseModel()
+                    {
+                        Name = teacherCourse.Course.Name,
+                    });
+                }
+                teacherModelList.Add(teacherModel);
             }
-            return View(managementModel);
+            return View(teacherModelList);
         }
 
         [HttpPost]
         public ActionResult Manage(TeacherModel teacherModel)
         {
-            var teacher = new Teacher()
-            {
-                FirstName = teacherModel.FirstName,
-                LastName = teacherModel.LastName,
-            };
-            Teachers.Add(teacher);
+            //var teacher = new Teacher()
+            //{
+            //    FirstName = teacherModel.FirstName,
+            //    LastName = teacherModel.LastName,
+            //};
+            //Teachers.Add(teacher);
 
-            foreach (var courseId in teacherModel.CourseIds)
-            {
-                var course = Courses.Get(courseId);
-                course.Teacher = teacher;
-                Courses.Update(course);
-            }
-            UnitOfWork.Commit();
+            //foreach (var courseId in teacherModel.CourseIds)
+            //{
+            //    var course = Courses.Get(courseId);
+            //    course = teacher;
+            //    Courses.Update(course);
+            //}
+            //UnitOfWork.Commit();
             
             return RedirectToAction("Manage");
         }
