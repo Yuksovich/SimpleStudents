@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents.Data", "Data\SimpleStudents.Data.csproj", "{F6930A3E-2262-46AF-8205-72D34C618BAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStuedents.Services", "SimpleStuedents.Services\SimpleStuedents.Services.csproj", "{B3C5DE48-EAFF-4F93-9F76-35F53B236755}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStudents.Services", "SimpleStuedents.Services\SimpleStudents.Services.csproj", "{B3C5DE48-EAFF-4F93-9F76-35F53B236755}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
