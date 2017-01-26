@@ -15,6 +15,7 @@ namespace Data.Infrastructure
         public DbSet<Course> Courses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Description> Descriptions { get; set; }
+        public DbSet<TeacherCourse> TeacherCourses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
