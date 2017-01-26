@@ -7,27 +7,31 @@
 <h2>Manage</h2>
 
 <div class="courses">
-    <table>
-
-        @foreach (var courseModel in Model)
-            {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@(courseModel.Name)</td>
-                <td>@foreach (var teacher in courseModel.Teachers)
-                    {
-                        <p>@(teacher.FirstName) @(teacher.LastName)</p>
-                    }</td>
+                <th>Course name</th>
+                <th>Teachers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var courseModel in Model)
+            {
+                <tr>
+                    <td>@(courseModel.Name)</td>
+                    <td>
+                        @foreach (var teacher in courseModel.Teachers)
+                        {
+                            <p>@(teacher.FirstName) @(teacher.LastName)</p>
+                        }
+                    </td>
                 </tr>
-        }
+            }
     </table>
 </div>
 
 <form method="post" action="">
-    <p />
-    <h2>Input course</h2>
-    <input type="text" name="Name" />
-
-    <input type="submit" value="Add new course" />
+    <input type="button" value="Add new course" />
 </form>
 
 @*@using (Html.BeginForm())
