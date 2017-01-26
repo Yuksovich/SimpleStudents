@@ -16,12 +16,12 @@ namespace Data.Infrastructure
             Context = dbFactory.Init();
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             Context.Set<T>().Add(entity);
         }
 
-        public void Delete(Expression<Func<T, bool>> where)
+        public virtual void Delete(Expression<Func<T, bool>> where)
         {
             var enumerable = Context.Set<T>().Where(where).AsEnumerable();
             foreach (var entity in enumerable)
@@ -30,27 +30,27 @@ namespace Data.Infrastructure
             }
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             Context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return Context.Set<T>().ToList();
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return Context.Set<T>().Find(id);
         }
 
-        public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
             return Context.Set<T>().Where(where).AsEnumerable();
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             Context.Set<T>().Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
