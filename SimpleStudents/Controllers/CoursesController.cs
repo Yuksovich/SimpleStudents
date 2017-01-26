@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
 using SimpleStudents.Domain;
-using SimpleStudents.Web.Models;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -18,34 +17,27 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            var managementModel = new CourseManagementModel
+            var courses = Courses.GetAll();
+            var courseModelList = new List<CourseModel>();
+            foreach (var course in courses)
             {
-                Courses = new List<CourseModel>(),
-                Teachers = new List<TeacherModel>()
-            };
-
-            foreach (var course in Courses.GetAll())
-            {
-                managementModel.Courses.Add(new CourseModel()
+                var courseModel = new CourseModel()
                 {
                     Name = course.Name,
-                    TeacherId = course.Teacher?.Id,
-                    TeacherFirsName = course.Teacher?.FirstName,
-                    TeacherLastName = course.Teacher?.LastName
-                });
-            }
-            
-            foreach (var teacher in Teachers.GetAll())
-            {
-                managementModel.Teachers.Add(new TeacherModel()
+                    Teachers = new List<TeacherModel>()
+                };
+                foreach (var teacherCourse in course.TeacherCourse)
                 {
-                    FirstName = teacher.FirstName,
-                    LastName = teacher.LastName,
-                    Id = teacher.Id
-                });
+                    courseModel.Teachers.Add(new TeacherModel()
+                    {
+                        FirstName = teacherCourse.Teacher.FirstName,
+                        LastName = teacherCourse.Teacher.LastName
+                    });
+                }
+                courseModelList.Add(courseModel);
             }
 
-            return View(managementModel);
+            return View(courseModelList);
         }
 
         [HttpPost]
@@ -53,7 +45,7 @@ namespace SimpleStudents.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Courses.Add(new Course {Name = course.Name});
+                Courses.Add(new Course { Name = course.Name });
                 UnitOfWork.Commit();
             }
             return RedirectToAction("Manage");

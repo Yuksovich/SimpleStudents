@@ -1,4 +1,4 @@
-﻿@model SimpleStudents.Web.Models.Courses.CourseManagementModel
+﻿@model List<SimpleStudents.Web.Models.Courses.CourseModel>
 
 @{
     ViewBag.Title = "Courses management";
@@ -9,13 +9,15 @@
 <div class="courses">
     <table>
 
-        @foreach (var courseModel in Model.Courses)
+        @foreach (var courseModel in Model)
             {
             <tr>
                 <td>@(courseModel.Name)</td>
-                <td>@(courseModel.TeacherFirsName)</td>
-                <td>@(courseModel.TeacherLastName)</td>
-            </tr>
+                <td>@foreach (var teacher in courseModel.Teachers)
+                    {
+                        <p>@(teacher.FirstName) @(teacher.LastName)</p>
+                    }</td>
+                </tr>
         }
     </table>
 </div>
