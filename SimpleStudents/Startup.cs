@@ -21,11 +21,11 @@ namespace SimpleStudents.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
             builder.RegisterSource(new ViewRegistrationSource());
             builder.RegisterType<UniversityDbFactory>().As<IDbFactory>().InstancePerRequest();
-            builder.RegisterType<CourseRepository>().As<ICourseRepository>();
-            builder.RegisterType<TeacherRepository>().As<ITeacherRepository>();
-            builder.RegisterType<StudentsRepository>().As<IStudentsRepository>();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-                    
+            builder.RegisterType<CourseRepository>().As<ICourseRepository>().InstancePerRequest(); ;
+            builder.RegisterType<TeacherRepository>().As<ITeacherRepository>().InstancePerRequest(); ;
+            builder.RegisterType<StudentsRepository>().As<IStudentsRepository>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest(); ;
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             app.UseAutofacMiddleware(container);
