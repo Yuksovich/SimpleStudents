@@ -19,12 +19,10 @@ namespace Data.Repositories
         public IEnumerable<Student> GetAllStudentsPaging(int pageIndex, int pageSize = 10)
         {
             return
-                UniversityContext?.Students.OrderBy(s => s.LastName)
+                Set.OrderBy(s => s.LastName)
                     .ThenBy(s => s.FirstName)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize);
         }
-
-        private UniversityContext UniversityContext => Context as UniversityContext;
     }
 }

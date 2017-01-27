@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
-using SimpleStudents.Domain;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -17,31 +16,17 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            return View(getTeachersTable());
+            return View(GetTeachersTable());
         }
 
         [HttpPost]
         public ActionResult Manage(TeacherModel teacherModel)
         {
-            //var teacher = new Teacher()
-            //{
-            //    FirstName = teacherModel.FirstName,
-            //    LastName = teacherModel.LastName,
-            //};
-            //Teachers.Add(teacher);
-
-            //foreach (var courseId in teacherModel.CourseIds)
-            //{
-            //    var course = Courses.Get(courseId);
-            //    course = teacher;
-            //    Courses.Update(course);
-            //}
-            //UnitOfWork.Commit();
             
             return RedirectToAction("Manage");
         }
 
-        private List<TeacherModel> getTeachersTable()
+        private List<TeacherModel> GetTeachersTable()
         {
             var teachers = Teachers.GetAll();
             var teacherModelList = new List<TeacherModel>();

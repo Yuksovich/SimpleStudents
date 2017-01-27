@@ -81,6 +81,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\SimpleStudents.Data.csproj">
+      <Project>{f6930a3e-2262-46af-8205-72d34c618bac}</Project>
+      <Name>SimpleStudents.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStudents.Domain\SimpleStudents.Domain.csproj">
+      <Project>{02b41abe-2b3f-4937-a218-6083d8fee820}</Project>
+      <Name>SimpleStudents.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

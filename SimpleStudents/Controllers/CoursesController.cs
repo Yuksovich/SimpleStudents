@@ -24,11 +24,7 @@ namespace SimpleStudents.Web.Controllers
         [HttpPost]
         public ActionResult Manage(CourseModel course)
         {
-            if (ModelState.IsValid)
-            {
-                Courses.Add(new Course {Name = course.Name});
-                UnitOfWork.Commit();
-            }
+            
             return RedirectToAction("Manage");
         }
 
