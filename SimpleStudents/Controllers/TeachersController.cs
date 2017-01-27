@@ -17,26 +17,7 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            var teachers = Teachers.GetAll();
-            var teacherModelList = new List<TeacherModel>();
-            foreach (var teacher in teachers)
-            {
-                var teacherModel = new TeacherModel()
-                {
-                    FirstName = teacher.FirstName,
-                    LastName = teacher.LastName,
-                    Courses = new List<CourseModel>()
-                };
-                foreach (var teacherCourse in teacher.TeacherCourses)
-                {
-                    teacherModel.Courses.Add(new CourseModel()
-                    {
-                        Name = teacherCourse.Course.Name,
-                    });
-                }
-                teacherModelList.Add(teacherModel);
-            }
-            return View(teacherModelList);
+            return View(getTeachersTable());
         }
 
         [HttpPost]
@@ -58,6 +39,30 @@ namespace SimpleStudents.Web.Controllers
             //UnitOfWork.Commit();
             
             return RedirectToAction("Manage");
+        }
+
+        private List<TeacherModel> getTeachersTable()
+        {
+            var teachers = Teachers.GetAll();
+            var teacherModelList = new List<TeacherModel>();
+            foreach (var teacher in teachers)
+            {
+                var teacherModel = new TeacherModel()
+                {
+                    FirstName = teacher.FirstName,
+                    LastName = teacher.LastName,
+                    Courses = new List<CourseModel>()
+                };
+                foreach (var teacherCourse in teacher.TeacherCourses)
+                {
+                    teacherModel.Courses.Add(new CourseModel()
+                    {
+                        Name = teacherCourse.Course.Name,
+                    });
+                }
+                teacherModelList.Add(teacherModel);
+            }
+            return teacherModelList;
         }
     }
 }

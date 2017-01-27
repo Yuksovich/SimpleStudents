@@ -21,7 +21,9 @@ namespace Data.Repositories
         public override IQueryable<Teacher> GetAll()
         {
             return
-                _context?.Teachers.Include(c => c.TeacherCourses);
+                _context?.Teachers
+                .Include(c => c.TeacherCourses)
+                .Include(i=>i.TeacherCourses.Select(s=>s.Course));
         }
     }
 }

@@ -11,16 +11,18 @@ namespace Data.Repositories
 
     public class CourseRepository : RepositoryBase<Course>, ICourseRepository
     {
+        private readonly UniversityContext _context;
+
         public CourseRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+            _context = Context as UniversityContext;
         }
 
         public override IQueryable<Course> GetAll()
         {
-            var context = Context as UniversityContext;
-
-            return
-                context?.Courses.Include(c => c.TeacherCourse);
+            return _context?.Courses
+                .Include(i => i.TeacherCourse)
+                .Include(c => c.TeacherCourse.Select(s => s.Teacher));
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
 using SimpleStudents.Domain;
-using SimpleStudents.Web.Models;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -19,27 +18,7 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            var courses = Courses.GetAll();
-            var courseModelList = new List<CourseModel>();
-            foreach (var course in courses)
-            {
-                var courseModel = new CourseModel()
-                {
-                    Name = course.Name,
-                    Teachers = new List<TeacherModel>()
-                };
-                foreach (var teacherCourse in course.TeacherCourse)
-                {
-                    courseModel.Teachers.Add(new TeacherModel()
-                    {
-                        FirstName = teacherCourse.Teacher.FirstName,
-                        LastName = teacherCourse.Teacher.LastName
-                    });
-                }
-                courseModelList.Add(courseModel);
-            }
-
-            return View(courseModelList);
+            return View(getCoursesTable());
         }
 
         [HttpPost]
@@ -47,10 +26,34 @@ namespace SimpleStudents.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Courses.Add(new Course { Name = course.Name });
+                Courses.Add(new Course {Name = course.Name});
                 UnitOfWork.Commit();
             }
             return RedirectToAction("Manage");
+        }
+
+        private List<CourseModel> getCoursesTable()
+        {
+            var coursesModelList = new List<CourseModel>();
+            var courses = Courses.GetAll();
+            foreach (var course in courses)
+            {
+                var teacherModelsList = new List<TeacherModel>();
+                var teachers = course.TeacherCourse.Select(c => c.Teacher);
+                foreach (var teacher in teachers)
+                    teacherModelsList.Add(new TeacherModel
+                    {
+                        FirstName = teacher.FirstName,
+                        LastName = teacher.LastName
+                    });
+
+                coursesModelList.Add(new CourseModel
+                {
+                    Name = course.Name,
+                    Teachers = teacherModelsList
+                });
+            }
+            return coursesModelList;
         }
     }
 }
