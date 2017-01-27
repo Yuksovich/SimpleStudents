@@ -25,7 +25,7 @@ namespace SimpleStudents.Web
             builder.RegisterType<TeacherRepository>().As<ITeacherRepository>();
             builder.RegisterType<StudentsRepository>().As<IStudentsRepository>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-
+                    
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             app.UseAutofacMiddleware(container);

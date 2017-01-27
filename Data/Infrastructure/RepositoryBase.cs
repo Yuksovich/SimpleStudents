@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,9 +24,7 @@ namespace Data.Infrastructure
         {
             var enumerable = Context.Set<T>().Where(where).AsEnumerable();
             foreach (var entity in enumerable)
-            {
                 Delete(entity);
-            }
         }
 
         public virtual void Delete(T entity)
@@ -35,9 +32,9 @@ namespace Data.Infrastructure
             Context.Set<T>().Remove(entity);
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
-            return Context.Set<T>().ToList();
+            return Context.Set<T>();
         }
 
         public virtual T Get(int id)
@@ -45,9 +42,9 @@ namespace Data.Infrastructure
             return Context.Set<T>().Find(id);
         }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        public virtual IQueryable<T> GetMany(Expression<Func<T, bool>> where)
         {
-            return Context.Set<T>().Where(where).AsEnumerable();
+            return Context.Set<T>().Where(where);
         }
 
         public virtual void Update(T entity)

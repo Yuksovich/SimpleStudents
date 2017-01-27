@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
+﻿using System.Data.Entity;
 using System.Linq;
 using Data.Infrastructure;
 using SimpleStudents.Domain;
@@ -17,14 +15,12 @@ namespace Data.Repositories
         {
         }
 
-        public override IEnumerable<Course> GetAll()
+        public override IQueryable<Course> GetAll()
         {
             var context = Context as UniversityContext;
-            
+
             return
-                context?.Courses.Include(c => c.TeacherCourse)
-                    .Include(i => i.TeacherCourse.Select(s => s.Teacher))
-                    .ToList();
+                context?.Courses.Include(c => c.TeacherCourse);
         }
     }
 }
