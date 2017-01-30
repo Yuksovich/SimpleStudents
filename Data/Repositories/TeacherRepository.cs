@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using SimpleStudents.Domain;
 
 namespace Data.Repositories
@@ -13,12 +11,6 @@ namespace Data.Repositories
     {
         public TeacherRepository(IDbFactory dbFactory) : base(dbFactory)
         {
-        }
-
-        public override IQueryable<Teacher> GetAll()
-        {
-            return
-                Set.Include(c => c.TeacherCourses).Include(i => i.TeacherCourses.Select(s => s.Course));
         }
     }
 }

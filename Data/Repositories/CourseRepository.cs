@@ -14,12 +14,5 @@ namespace Data.Repositories
         public CourseRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
-
-        public override IQueryable<Course> GetAll()
-        {
-            return Set
-                .Include(i => i.TeacherCourse)
-                .Include(c => c.TeacherCourse.Select(s => s.Teacher));
-        }
     }
 }
