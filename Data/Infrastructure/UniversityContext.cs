@@ -9,6 +9,7 @@ namespace Data.Infrastructure
         public UniversityContext() : base("UniversityDbContext")
         {
             Database.SetInitializer(new UniversitySeeder());
+            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public DbSet<Student> Students { get; set; }
