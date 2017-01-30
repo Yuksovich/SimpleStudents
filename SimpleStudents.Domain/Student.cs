@@ -8,6 +8,8 @@ namespace SimpleStudents.Domain
         {
             base.Position = Role.Student;
         }
+
+        public string Email { get; set; }
         public IList<Description> Descriptions { get; set; }
     }
 }
