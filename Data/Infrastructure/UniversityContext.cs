@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Diagnostics;
 using SimpleStudents.Domain;
 using SimpleStudents.Domain.EntityConfiguration;
 
@@ -9,7 +10,8 @@ namespace Data.Infrastructure
         public UniversityContext() : base("UniversityDbContext")
         {
             Database.SetInitializer(new UniversitySeeder());
-            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            //TODO remove log
+            Database.Log = s => Debug.WriteLine(s);
         }
 
         public DbSet<Student> Students { get; set; }
@@ -27,4 +29,3 @@ namespace Data.Infrastructure
         }
     }
 }
-
