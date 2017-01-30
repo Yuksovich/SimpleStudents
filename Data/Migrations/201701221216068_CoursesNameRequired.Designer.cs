@@ -4,16 +4,16 @@ using System.CodeDom.Compiler;
 using System.Data.Entity.Migrations.Infrastructure;
 using System.Resources;
 
-namespace SimpleStudents.Web.Migrations
+namespace Data.Migrations
 {
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedConfigurationsForDomains : IMigrationMetadata
+    public sealed partial class CoursesNameRequired : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedConfigurationsForDomains));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CoursesNameRequired));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701230442353_AddedConfigurationsForDomains"; }
+            get { return "201701221216068_CoursesNameRequired"; }
         }
         
         string IMigrationMetadata.Source

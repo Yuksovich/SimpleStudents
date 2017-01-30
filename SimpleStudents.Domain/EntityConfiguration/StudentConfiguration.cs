@@ -13,6 +13,10 @@ namespace SimpleStudents.Domain.EntityConfiguration
             Property(p => p.LastName)
                 .IsRequired()
                 .HasMaxLength(255);
+
+            Property(p => p.Email)
+                .IsRequired()
+                .HasMaxLength(255);
         }
     }
 }

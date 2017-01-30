@@ -1,8 +1,7 @@
-namespace SimpleStudents.Web.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Data.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class DomainModelChanged : DbMigration
     {
         public override void Up()

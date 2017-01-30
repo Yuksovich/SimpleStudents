@@ -194,27 +194,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701221201366_InitialCreate.cs" />
-    <Compile Include="Migrations\201701221201366_InitialCreate.Designer.cs">
-      <DependentUpon>201701221201366_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701221216068_CoursesNameRequired.cs" />
-    <Compile Include="Migrations\201701221216068_CoursesNameRequired.Designer.cs">
-      <DependentUpon>201701221216068_CoursesNameRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701230442353_AddedConfigurationsForDomains.cs" />
-    <Compile Include="Migrations\201701230442353_AddedConfigurationsForDomains.Designer.cs">
-      <DependentUpon>201701230442353_AddedConfigurationsForDomains.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701251236004_DomainModelChanged.cs" />
-    <Compile Include="Migrations\201701251236004_DomainModelChanged.Designer.cs">
-      <DependentUpon>201701251236004_DomainModelChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701260844323_DomainModelCheck.cs" />
-    <Compile Include="Migrations\201701260844323_DomainModelCheck.Designer.cs">
-      <DependentUpon>201701260844323_DomainModelCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Courses\CourseModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -308,23 +287,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701221201366_InitialCreate.resx">
-      <DependentUpon>201701221201366_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701221216068_CoursesNameRequired.resx">
-      <DependentUpon>201701221216068_CoursesNameRequired.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701230442353_AddedConfigurationsForDomains.resx">
-      <DependentUpon>201701230442353_AddedConfigurationsForDomains.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701251236004_DomainModelChanged.resx">
-      <DependentUpon>201701251236004_DomainModelChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701260844323_DomainModelCheck.resx">
-      <DependentUpon>201701260844323_DomainModelCheck.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\SimpleStudents.Data.csproj">
