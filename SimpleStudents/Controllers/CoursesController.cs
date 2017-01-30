@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
-using SimpleStudents.Domain;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -18,38 +17,30 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult Manage()
         {
-            return View(getCoursesTable());
+            return View(GetCoursesTable());
         }
 
         [HttpPost]
         public ActionResult Manage(CourseModel course)
         {
-            
             return RedirectToAction("Manage");
         }
 
-        private List<CourseModel> getCoursesTable()
+        private List<CourseModel> GetCoursesTable()
         {
-            var coursesModelList = new List<CourseModel>();
-            var courses = Courses.GetAll();
-            foreach (var course in courses)
-            {
-                var teacherModelsList = new List<TeacherModel>();
-                var teachers = course.TeacherCourse.Select(c => c.Teacher);
-                foreach (var teacher in teachers)
-                    teacherModelsList.Add(new TeacherModel
-                    {
-                        FirstName = teacher.FirstName,
-                        LastName = teacher.LastName
-                    });
+            // var listCourseModel = new List<CourseModel>();
 
-                coursesModelList.Add(new CourseModel
-                {
-                    Name = course.Name,
-                    Teachers = teacherModelsList
-                });
-            }
-            return coursesModelList;
+            var listCourseModel =
+                Courses.GetAll()
+                    .Select(s =>new CourseModel{
+                                Name = s.Name,
+                                Teachers =s.TeacherCourse.Select(tc =>new TeacherModel{
+                                                FirstName = tc.Teacher.FirstName,
+                                                LastName = tc.Teacher.LastName
+                                            })
+                            }).ToList();
+
+            return listCourseModel;
         }
     }
 }
