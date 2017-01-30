@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
@@ -28,25 +29,13 @@ namespace SimpleStudents.Web.Controllers
 
         private List<TeacherModel> GetTeachersTable()
         {
-            var teachers = Teachers.GetAll();
-            var teacherModelList = new List<TeacherModel>();
-            foreach (var teacher in teachers)
+            var teacherModelList = Teachers.GetAll().Select(t => new TeacherModel()
             {
-                var teacherModel = new TeacherModel()
-                {
-                    FirstName = teacher.FirstName,
-                    LastName = teacher.LastName,
-                    Courses = new List<CourseModel>()
-                };
-                foreach (var teacherCourse in teacher.TeacherCourses)
-                {
-                    teacherModel.Courses.Add(new CourseModel()
-                    {
-                        Name = teacherCourse.Course.Name,
-                    });
-                }
-                teacherModelList.Add(teacherModel);
-            }
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Courses = t.TeacherCourses.Select(tc => new CourseModel() {Name = tc.Course.Name})
+            }).ToList();
+            
             return teacherModelList;
         }
     }
