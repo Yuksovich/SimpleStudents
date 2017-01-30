@@ -9,7 +9,7 @@ namespace SimpleStudents.Web.Models.Courses
         public int Id { get; set; }
         [Required, MaxLength(255)]
         public string Name { get; set; }
-        public IList<int> TeachersIds { get; set; }
-        public IList<TeacherModel> Teachers { get; set; }
+        public IEnumerable<int> TeachersIds { get; set; }
+        public IEnumerable<TeacherModel> Teachers { get; set; }
     }
 }
