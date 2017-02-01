@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Data.Infrastructure;
 using Data.Repositories;
+using SimpleStudents.Domain;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -15,32 +16,38 @@ namespace SimpleStudents.Web.Controllers
         public ITeacherRepository Teachers { get; set; }
 
         [HttpGet]
-        public ActionResult Manage()
+        public ActionResult ManageCourses()
         {
-            return View(GetCoursesTable());
+            var listCourseModel = Courses.GetAll().Select(s => new CourseModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TeachersFullNames = s.TeacherCourse.Select(t=>t.Teacher.LastName+ " "+ t.Teacher.FirstName)
+            }).ToList();
+            return View(listCourseModel);
         }
 
-        [HttpPost]
-        public ActionResult Manage(CourseModel course)
+        public ActionResult NewCourse()
         {
-            return RedirectToAction("Manage");
+           var addNewCourse = new AddNewCourseModel
+           {
+                ChooseTeachers  = Teachers.GetAll().Select(s=>new AddNewCourseTeacher
+                {
+                    Id = s.Id,
+                    FullName = s.LastName + " " + s.FirstName
+                }).ToList()
+           };
+            return View(addNewCourse);
         }
 
-        private List<CourseModel> GetCoursesTable()
+        public ActionResult AddCourse(AddNewCourseModel model)
         {
-            // var listCourseModel = new List<CourseModel>();
-
-            var listCourseModel =
-                Courses.GetAll()
-                    .Select(s =>new CourseModel{
-                                Name = s.Name,
-                                Teachers =s.TeacherCourse.Select(tc =>new TeacherModel{
-                                                FirstName = tc.Teacher.FirstName,
-                                                LastName = tc.Teacher.LastName
-                                            })
-                            }).ToList();
-
-            return listCourseModel;
+            if (ModelState.IsValid)
+            {
+                
+                return RedirectToAction("ManageCourses");
+            }
+            return View("NewCourse", model);
         }
     }
 }

@@ -7,7 +7,7 @@
 <h2>Manage</h2>
 
 <div class="body-content">
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Course name</th>
@@ -20,9 +20,9 @@
                 <tr>
                     <td>@(courseModel.Name)</td>
                     <td>
-                        @foreach (var teacher in courseModel.Teachers)
+                        @foreach (var teacherName in courseModel.TeachersFullNames)
                         {
-                            <p>@(teacher.FirstName) @(teacher.LastName)</p>
+                            <p>@(teacherName)</p>
                         }
                     </td>
                 </tr>
@@ -30,6 +30,4 @@
     </table>
 </div>
 
-<form method="post" action="">
-    <input type="button" value="Add new course" />
-</form>
+@Html.ActionLink("Add new course", "NewCourse",null, new { @class = "btn btn-primary" })

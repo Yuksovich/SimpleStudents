@@ -1,0 +1,27 @@
+﻿@model SimpleStudents.Web.Models.Courses.AddNewCourseModel
+@{
+    ViewBag.Title = "Add New Course";
+}
+
+<h2>Add New Course</h2>
+@using (Html.BeginForm("AddCourse", "Courses"))
+{
+    @Html.ValidationSummary(false, "Please fix the following errors")
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseName)
+        @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseName)
+    </div>
+    <div class="form-group">
+        <h3>Assign teachers</h3>
+        @for (int i = 0; i < Model.ChooseTeachers.Count(); i++)
+        {<p></p>
+            @Html.HiddenFor(m => m.ChooseTeachers[i].Id)
+            @Html.CheckBoxFor(m => m.ChooseTeachers[i].Choosen)
+            @Html.Label(Model.ChooseTeachers[i].FullName)
+            ;
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Student</button>
+}

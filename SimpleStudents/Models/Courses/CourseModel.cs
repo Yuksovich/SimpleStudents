@@ -7,9 +7,11 @@ namespace SimpleStudents.Web.Models.Courses
     public class CourseModel
     {
         public int Id { get; set; }
-        [Required, MaxLength(255)]
+        [Required, MaxLength(255), Display(Name = "Course Name")]
         public string Name { get; set; }
-        public IEnumerable<int> TeachersIds { get; set; }
-        public IEnumerable<TeacherModel> Teachers { get; set; }
+        public int TeacherId { get; set; }
+
+        [Display(Name = "Teachers")]
+        public IEnumerable<string> TeachersFullNames { get; set; }
     }
 }
