@@ -1,0 +1,21 @@
+﻿@model SimpleStudents.Web.Models.Students.AddCourseToStudentModel
+@{
+    ViewBag.Title = "Adding course to student";
+}
+
+<h2>Adding course to student</h2>
+@using (Html.BeginForm("CourseAddedToStudent", "Students", new {CourseId=Model.CourseId}))
+{
+    <h3>@Model.CourseName</h3>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.TeacherModels.First().FullName)
+        @Html.DropDownListFor(m=>m.TeacherId, new SelectList(Model.TeacherModels, "Id", "FullName"), "-ChooseTeacher-", new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Mark)
+        @Html.EnumDropDownListFor(m=>m.Marks, "Select mark", new {@class="form-control"})
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+}

@@ -1,32 +1,61 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 using Data.Infrastructure;
-using SimpleStudents.Web.Models;
+using Data.Repositories;
+using SimpleStudents.Domain;
+using SimpleStudents.Web.Models.Courses;
+using SimpleStudents.Web.Models.Students;
+using SimpleStudents.Web.Models.Teachers;
 
 namespace SimpleStudents.Web.Controllers
 {
     public class StudentsController : Controller
     {
-        [HttpGet]
-        public ActionResult Manage()
+        private readonly List<CourseModel> _courseModelsList = new List<CourseModel>();
+        public IStudentsRepository Students { get; set; }
+        public ICourseRepository Courses { get; set; }
+        public ITeacherRepository Teachers { get; set; }
+        public IUnitOfWork UnitOfWork { get; set; }
+
+        public ActionResult ManageStudents()
         {
-            return View();
+            var students = Students.GetAll().Select(s => new StudentModel
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Email = s.Email,
+                AvarageMark = s.Descriptions.Average(a => a.Mark)
+            }).ToList();
+            return View(students);
         }
 
         [HttpPost]
-        public ActionResult Manage(StudentModel studentModel)
+        public ActionResult AddStudent(StudentModel studentModel)
         {
             if (ModelState.IsValid)
             {
-                var context = new UniversityContext();
-                context.Students.Add(new Domain.Student()
+                if (!Students.GetAll().Select(s => s.Email).Contains(studentModel.Email))
                 {
-                    FirstName = studentModel.FirstName,
-                    LastName = studentModel.LastName
-                });
-                context.SaveChanges();
-                return Content("Yes");
+                    Students.Add(new Student()
+                    {
+                        FirstName = studentModel.FirstName,
+                        LastName = studentModel.LastName,
+                        Email = studentModel.Email
+                    });
+                    UnitOfWork.Commit();
+                    return RedirectToAction("ManageStudents");
+                }
             }
-            return Content("no");
+            return View("NewStudent", studentModel);
+        }
+        
+        public ActionResult NewStudent()
+        {
+            return View(new StudentModel());
         }
     }
 }
