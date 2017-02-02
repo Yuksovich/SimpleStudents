@@ -197,7 +197,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Courses\AddNewCourseModel.cs" />
     <Compile Include="Models\Courses\CourseModel.cs" />
-    <Compile Include="Models\DescriptionModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Students\StudentModel.cs" />
