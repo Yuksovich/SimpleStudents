@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using Data.Infrastructure;
+using SimpleStudents.Data.Infrastructure;
 
-namespace Data.Repositories
+namespace SimpleStudents.Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

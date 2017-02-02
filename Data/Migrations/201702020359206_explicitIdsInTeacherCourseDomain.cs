@@ -1,8 +1,7 @@
-namespace Data.Migrations
+using System.Data.Entity.Migrations;
+
+namespace SimpleStudents.Data.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class explicitIdsInTeacherCourseDomain : DbMigration
     {
         public override void Up()

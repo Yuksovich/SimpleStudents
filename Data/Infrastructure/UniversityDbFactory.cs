@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
-using SimpleStudents;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public class UniversityDbFactory : Disposable, IDbFactory
     {

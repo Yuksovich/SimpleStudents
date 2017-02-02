@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public interface IDbFactory : IDisposable
     {

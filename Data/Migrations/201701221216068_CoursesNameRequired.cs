@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 
-namespace Data.Migrations
+namespace SimpleStudents.Data.Migrations
 {
     public partial class CoursesNameRequired : DbMigration
     {

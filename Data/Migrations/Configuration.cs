@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using Data.Infrastructure;
+using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Domain;
 
-namespace Data.Migrations
+namespace SimpleStudents.Data.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<UniversityContext>
     {

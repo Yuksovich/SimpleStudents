@@ -1,7 +1,7 @@
-﻿using Data.Infrastructure;
+﻿using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Domain;
 
-namespace Data.Repositories
+namespace SimpleStudents.Data.Repositories
 {
     public interface IStudentsRepository : IRepository<Student>
     {

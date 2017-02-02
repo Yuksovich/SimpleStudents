@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Data.Infrastructure;
-using Data.Repositories;
+using SimpleStudents.Data.Infrastructure;
+using SimpleStudents.Data.Repositories;
 using SimpleStudents.Domain;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using SimpleStudents.Domain;
 using SimpleStudents.Domain.EntityConfiguration;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public class UniversityContext : DbContext
     {

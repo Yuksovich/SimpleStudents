@@ -1,9 +1,7 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using Data.Infrastructure;
+﻿using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Domain;
 
-namespace Data.Repositories
+namespace SimpleStudents.Data.Repositories
 {
     public interface ICourseRepository : IRepository<Course>
     {

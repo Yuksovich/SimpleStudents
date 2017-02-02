@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public class UniversitySeeder : DropCreateDatabaseIfModelChanges<UniversityContext>
     {

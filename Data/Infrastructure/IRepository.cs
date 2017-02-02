@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using SimpleStudents.Domain;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public interface IRepository<T> where T : class, IEntity
     {

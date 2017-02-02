@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Data.Infrastructure
+namespace SimpleStudents.Data.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {

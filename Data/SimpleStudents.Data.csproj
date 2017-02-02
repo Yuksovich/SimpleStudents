@@ -7,8 +7,8 @@
     <ProjectGuid>{F6930A3E-2262-46AF-8205-72D34C618BAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data</RootNamespace>
-    <AssemblyName>Data</AssemblyName>
+    <RootNamespace>SimpleStudents.Data</RootNamespace>
+    <AssemblyName>SimpleStudents.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using Data.Infrastructure;
-using Data.Repositories;
 using Microsoft.Owin;
 using Owin;
+using SimpleStudents.Data.Infrastructure;
+using SimpleStudents.Data.Repositories;
 using SimpleStudents.Web;
 
 [assembly: OwinStartup(typeof(Startup))]

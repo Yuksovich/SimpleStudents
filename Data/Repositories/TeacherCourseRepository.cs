@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Infrastructure;
+﻿using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Domain;
 
-namespace Data.Repositories
+namespace SimpleStudents.Data.Repositories
 {
     public interface ITeacherCourseRepository : IRepository<TeacherCourse>
     {
