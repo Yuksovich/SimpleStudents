@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201701301135416_AddEmailToStudentDomain.Designer.cs">
       <DependentUpon>201701301135416_AddEmailToStudentDomain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702020359206_explicitIdsInTeacherCourseDomain.cs" />
+    <Compile Include="Migrations\201702020359206_explicitIdsInTeacherCourseDomain.Designer.cs">
+      <DependentUpon>201702020359206_explicitIdsInTeacherCourseDomain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701301135416_AddEmailToStudentDomain.resx">
       <DependentUpon>201701301135416_AddEmailToStudentDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702020359206_explicitIdsInTeacherCourseDomain.resx">
+      <DependentUpon>201702020359206_explicitIdsInTeacherCourseDomain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
