@@ -201,6 +201,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Students\StudentModel.cs" />
+    <Compile Include="Models\Teachers\AddNewTeacherModel.cs" />
     <Compile Include="Models\Teachers\TeacherModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,10 +282,11 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Courses\ManageCourses.cshtml" />
-    <Content Include="Views\Teachers\Manage.cshtml" />
+    <Content Include="Views\Teachers\ManageTeachers.cshtml" />
     <Content Include="Views\Courses\NewCourse.cshtml" />
     <Content Include="Views\Students\NewStudent.cshtml" />
     <Content Include="Views\Students\AddCourseToStudent.cshtml" />
+    <Content Include="Views\Teachers\NewTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

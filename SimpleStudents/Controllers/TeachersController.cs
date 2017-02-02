@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Data.Infrastructure;
-using Data.Repositories;
+using SimpleStudents.Data.Infrastructure;
+using SimpleStudents.Data.Repositories;
+using SimpleStudents.Domain;
 using SimpleStudents.Web.Models.Courses;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -12,31 +13,62 @@ namespace SimpleStudents.Web.Controllers
     {
         public IUnitOfWork UnitOfWork { get; set; }
         public ICourseRepository Courses { get; set; }
+        public ITeacherCourseRepository TeacherCourse { get; set; }
         public ITeacherRepository Teachers { get; set; }
 
         [HttpGet]
-        public ActionResult Manage()
+        public ActionResult ManageTeachers()
         {
-            return View(GetTeachersTable());
+            var teachers = Teachers.GetAll().Select(s => new TeacherModel
+            {
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                CoursesNames = s.TeacherCourses.Select(c => c.Course.Name)
+            }).ToList();
+            return View(teachers);
+        }
+
+        public ActionResult NewTeacher()
+        {
+            var addNewteacherModel = new AddNewTeacherModel
+            {
+                SimplifiedCourseModels = Courses.GetAll().Select(s => new SimplifiedCourseModel
+                {
+                    Id = s.Id,
+                    CourseName = s.Name
+                }).ToList()
+            };
+            return View(addNewteacherModel);
         }
 
         [HttpPost]
-        public ActionResult Manage(TeacherModel teacherModel)
+        public ActionResult AddTeacher(AddNewTeacherModel model)
         {
-            
-            return RedirectToAction("Manage");
-        }
-
-        private List<TeacherModel> GetTeachersTable()
-        {
-            var teacherModelList = Teachers.GetAll().Select(t => new TeacherModel()
+            if (!ModelState.IsValid)
             {
-                FirstName = t.FirstName,
-                LastName = t.LastName,
-                Courses = t.TeacherCourses.Select(tc => new CourseModel() {Name = tc.Course.Name})
-            }).ToList();
-            
-            return teacherModelList;
+                return View("NewTeacher", model);
+            }
+
+            var teacher = new Teacher
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+            Teachers.Add(teacher);
+            UnitOfWork.Commit();
+
+            var coursesSelected = model.SimplifiedCourseModels.Where(s => s.IsSelected).Select(s => s.Id);
+            foreach (var courseId in coursesSelected)
+            {
+                TeacherCourse.Add( new TeacherCourse
+                {
+                    TeacherId = teacher.Id,
+                    CourseId = courseId
+                });
+            }
+            UnitOfWork.Commit();
+
+            return RedirectToAction("ManageTeachers");
         }
     }
 }
