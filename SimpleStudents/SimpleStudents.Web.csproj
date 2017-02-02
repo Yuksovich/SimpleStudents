@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Courses\AddNewCourseModel.cs" />
     <Compile Include="Models\Courses\CourseModel.cs" />
     <Compile Include="Models\DescriptionModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -279,9 +280,9 @@
     <Content Include="Views\Students\ManageStudents.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Courses\Manage.cshtml" />
+    <Content Include="Views\Courses\ManageCourses.cshtml" />
     <Content Include="Views\Teachers\Manage.cshtml" />
-    <Content Include="Views\Courses\AddCourse.cshtml" />
+    <Content Include="Views\Courses\NewCourse.cshtml" />
     <Content Include="Views\Students\NewStudent.cshtml" />
     <Content Include="Views\Students\AddCourseToStudent.cshtml" />
   </ItemGroup>

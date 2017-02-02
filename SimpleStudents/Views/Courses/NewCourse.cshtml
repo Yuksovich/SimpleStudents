@@ -6,7 +6,7 @@
 <h2>Add New Course</h2>
 @using (Html.BeginForm("AddCourse", "Courses"))
 {
-    @Html.ValidationSummary(false, "Please fix the following errors")
+    @Html.ValidationSummary(true, "Please fix the following errors")
     <div class="form-group">
         @Html.LabelFor(m => m.CourseName)
         @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control" })
@@ -23,5 +23,5 @@
         }
     </div>
 
-    <button type="submit" class="btn btn-primary">Add Student</button>
+    <button type="submit" class="btn btn-primary">Add Course</button>
 }
