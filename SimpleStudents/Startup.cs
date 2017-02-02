@@ -24,7 +24,8 @@ namespace SimpleStudents.Web
             builder.RegisterType<CourseRepository>().As<ICourseRepository>().InstancePerRequest(); ;
             builder.RegisterType<TeacherRepository>().As<ITeacherRepository>().InstancePerRequest(); ;
             builder.RegisterType<StudentsRepository>().As<IStudentsRepository>().InstancePerRequest();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest(); ;
+            builder.RegisterType<TeacherCourseRepository>().As<ITeacherCourseRepository>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
