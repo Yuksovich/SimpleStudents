@@ -16,10 +16,10 @@
         <h3>Assign teachers</h3>
         @for (int i = 0; i < Model.ChooseTeachers.Count(); i++)
         {<p></p>
-            @Html.HiddenFor(m => m.ChooseTeachers[i].Id)
+        @Html.HiddenFor(m => m.ChooseTeachers[i].Id)
+            @Html.HiddenFor(m=>m.ChooseTeachers[i].FullName)
             @Html.CheckBoxFor(m => m.ChooseTeachers[i].Choosen)
             @Html.Label(Model.ChooseTeachers[i].FullName)
-            ;
         }
     </div>
 
