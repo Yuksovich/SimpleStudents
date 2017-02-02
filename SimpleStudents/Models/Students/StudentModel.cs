@@ -8,7 +8,7 @@ namespace SimpleStudents.Web.Models.Students
 {
     public class StudentModel:UserModel
     {
-        [Required, MaxLength(255), Display(Name = "E-mail"), RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")]
+        [Required, MaxLength(255), Display(Name = "E-mail"), EmailAddress]
         public string Email { get; set; }
 
         [Display(Name = "Avarage mark")]
