@@ -1,0 +1,45 @@
+﻿@model SimpleStudents.Web.Models.Teachers.TeacherFormModel
+@{
+    if (Model.Id == 0)
+    {
+        ViewBag.Title = "Add new teacher";
+    }
+    else
+    {
+        ViewBag.Title = "Edit teacher";
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AddTeacher", "Teachers"))
+{
+    @Html.ValidationSummary(true, "Please fix the following problems")
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <h3>Assign courses</h3>
+    <div class="form-group">
+        @for (int i = 0; i < Model.SimplifiedCourseModels.Count; i++)
+        {<div class="form-group">
+             @Html.CheckBoxFor(m => m.SimplifiedCourseModels[i].IsSelected)
+             @Html.Label(Model.SimplifiedCourseModels[i].CourseName)
+             @Html.HiddenFor(m => m.SimplifiedCourseModels[i].Id)
+             @Html.HiddenFor(m => m.SimplifiedCourseModels[i].CourseName)
+         </div>
+        }
+    </div>
+    @Html.HiddenFor(m=>m.Id)
+    <button type="submit" class="btn btn-primary">Add new teacher</button>
+    if (Model.Id != 0)
+    {
+        @Html.ActionLink("Remove teacher from database", "DeleteTeacher", "Teachers",new {Id=Model.Id}, new {@class = "btn btn-danger"});
+    }
+}

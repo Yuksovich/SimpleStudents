@@ -6,6 +6,7 @@ using Owin;
 using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Data.Repositories;
 using SimpleStudents.Web;
+using SimpleStuedents.Services;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -27,6 +28,8 @@ namespace SimpleStudents.Web
             builder.RegisterType<TeacherCourseRepository>().As<ITeacherCourseRepository>().InstancePerRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
 
+            builder.RegisterType<TeacherCourseServices>().As<ITeachersCourseServices>().InstancePerRequest();
+           
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             app.UseAutofacMiddleware(container);

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SimpleStudents.Web.Models.Teachers
 {
-    public class AddNewTeacherModel
+    public class TeacherFormModel
     {
         public int Id { get; set; }
         [Required, MaxLength(255)]

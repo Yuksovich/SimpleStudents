@@ -17,7 +17,7 @@
             @foreach (var teacher in Model)
             {
                 <tr>
-                    <td>@(teacher.LastName + " " + teacher.FirstName)</td>
+                    <td>@Html.ActionLink(teacher.LastName + " " + teacher.FirstName, "EditTeacher", new {Id = teacher.Id})</td>
 
                     <td>
                         @foreach (var courseName in teacher.CoursesNames)
@@ -31,4 +31,4 @@
     </table>
 </div>
 
-@Html.ActionLink("Add New Teacher", "NewTeacher", null, new {@class = "btn btn-primary"})
+@Html.ActionLink("Add New Teacher", "FormTeacher", null, new {@class = "btn btn-primary"})

@@ -201,7 +201,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Students\StudentModel.cs" />
-    <Compile Include="Models\Teachers\AddNewTeacherModel.cs" />
+    <Compile Include="Models\Teachers\TeacherFormModel.cs" />
     <Compile Include="Models\Teachers\TeacherModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,7 +286,7 @@
     <Content Include="Views\Courses\NewCourse.cshtml" />
     <Content Include="Views\Students\NewStudent.cshtml" />
     <Content Include="Views\Students\AddCourseToStudent.cshtml" />
-    <Content Include="Views\Teachers\NewTeacher.cshtml" />
+    <Content Include="Views\Teachers\FormTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
