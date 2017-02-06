@@ -28,6 +28,7 @@ namespace SimpleStudents.Web.Controllers
             return View(listCourseModel);
         }
 
+        [HttpGet]
         public ActionResult NewCourse()
         {
             var addNewCourse = new AddNewCourseModel
@@ -41,6 +42,7 @@ namespace SimpleStudents.Web.Controllers
             return View(addNewCourse);
         }
 
+        [HttpPost]
         public ActionResult AddCourse(AddNewCourseModel model)
         {
             if (!ModelState.IsValid)
