@@ -20,6 +20,7 @@ namespace SimpleStudents.Web.Controllers
         public ITeacherRepository Teachers { get; set; }
         public IUnitOfWork UnitOfWork { get; set; }
 
+        [HttpGet]
         public ActionResult ManageStudents()
         {
             var students = Students.GetAll().Select(s => new StudentModel
@@ -53,6 +54,7 @@ namespace SimpleStudents.Web.Controllers
             return View("NewStudent", studentModel);
         }
         
+        [HttpGet]
         public ActionResult NewStudent()
         {
             return View(new StudentModel());

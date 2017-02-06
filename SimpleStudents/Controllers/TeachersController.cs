@@ -31,6 +31,7 @@ namespace SimpleStudents.Web.Controllers
             return View(teachers);
         }
 
+        [HttpGet]
         public ActionResult FormTeacher()
         {
             var addNewteacherModel = new TeacherFormModel
@@ -74,6 +75,7 @@ namespace SimpleStudents.Web.Controllers
             return RedirectToAction("ManageTeachers");
         }
 
+        [HttpGet]
         public ActionResult EditTeacher(int id)
         {
             var teacher = Teachers.Get(id);
@@ -93,6 +95,7 @@ namespace SimpleStudents.Web.Controllers
             return View("FormTeacher", teacherFormModel);
         }
 
+        [HttpGet]
         public ActionResult DeleteTeacher(int id)
         {
             Teachers.Delete(i => i.Id == id);
