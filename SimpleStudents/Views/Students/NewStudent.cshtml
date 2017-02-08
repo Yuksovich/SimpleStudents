@@ -19,14 +19,46 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <img id="loader" style="display: none" src="~/content/images/spinner.gif" />
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "email" })
         @Html.ValidationMessageFor(m => m.Email)
     </div>
 
     <button type="submit" class="btn btn-primary">Add Student</button>
 }
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $('#email').keyup(function(key) {
+                var inputedEmail = $('#email').val()
+                checkEmail(inputedEmail);
+            });
+            $('#email').change(function() {
+                var inputedEmail = $('#email').val()
+                checkEmail(inputedEmail);
+            });
+        });
 
-@section scripts
-{
+        function checkEmail(inputedEmail) {
+            $.ajax({
+                type: "GET",
+                url: "/api/students",
+                beforeSend: function() { setTimeout(showProgress(true), 500); },
+                success: function(emails) {
+                    showProgress(false);
+                    emails.forEach(function(email, i, arr) {
+                        if (inputedEmail === email) {
+                            alert("this email already exists");
+                        }
+                    });
+                }
+            });
+        }
+
+        function showProgress(isShow) {
+            $("#loader").toggle(isShow);
+        }
+    </script>
+
     @Scripts.Render("~/bundles/jqueryval")
 }
