@@ -43,3 +43,8 @@
         @Html.ActionLink("Remove teacher from database", "DeleteTeacher", "Teachers",new {Id=Model.Id}, new {@class = "btn btn-danger"});
     }
 }
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <h3>Assign teachers</h3>
-        @for (int i = 0; i < Model.ChooseTeachers.Count(); i++)
+        @for (var i = 0; i < Model.ChooseTeachers.Count(); i++)
         {<p></p>
         @Html.HiddenFor(m => m.ChooseTeachers[i].Id)
             @Html.HiddenFor(m=>m.ChooseTeachers[i].FullName)
@@ -22,6 +22,10 @@
             @Html.Label(Model.ChooseTeachers[i].FullName)
         }
     </div>
-
     <button type="submit" class="btn btn-primary">Add Course</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
