@@ -9,48 +9,58 @@
     @Html.ValidationSummary(false, "Please fix the following errors")
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
         @Html.ValidationMessageFor(m => m.FirstName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
         @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
-        <img id="loader" style="display: none" src="~/content/images/spinner.gif" />
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "email" })
+        <img id="loader" style="display: none" src="~/content/images/spinner.gif"/>
+        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", id = "email"})
+        <div id="email-validation"></div>
         @Html.ValidationMessageFor(m => m.Email)
     </div>
 
     <button type="submit" class="btn btn-primary">Add Student</button>
 }
 @section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function() {
             $('#email').keyup(function(key) {
-                var inputedEmail = $('#email').val()
+                var inputedEmail = $('#email').val();
                 checkEmail(inputedEmail);
             });
             $('#email').change(function() {
-                var inputedEmail = $('#email').val()
+                var inputedEmail = $('#email').val();
                 checkEmail(inputedEmail);
             });
         });
 
         function checkEmail(inputedEmail) {
+            var timeoutId;
             $.ajax({
                 type: "GET",
                 url: "/api/students",
-                beforeSend: function() { setTimeout(showProgress(true), 500); },
+                beforeSend: function() {
+                    timeoutId = setTimeout(function() { showProgress(true); }, 500);
+                },
                 success: function(emails) {
+                    clearTimeout(timeoutId);
                     showProgress(false);
+                    var found = false;
                     emails.forEach(function(email, i, arr) {
-                        if (inputedEmail === email) {
-                            alert("this email already exists");
-                        }
+                        if (inputedEmail === email)
+                            found = true;
                     });
+                    if (found)
+                        $('#email-validation').html("Student with such email already exists");
+                    else
+                        $("#email-validation").html("");
                 }
             });
         }
@@ -59,6 +69,4 @@
             $("#loader").toggle(isShow);
         }
     </script>
-
-    @Scripts.Render("~/bundles/jqueryval")
 }
