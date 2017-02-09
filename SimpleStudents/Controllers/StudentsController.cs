@@ -37,27 +37,32 @@ namespace SimpleStudents.Web.Controllers
         [HttpPost]
         public ActionResult AddStudent(StudentModel studentModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (!Students.GetAll().Select(s => s.Email).Contains(studentModel.Email))
-                {
-                    Students.Add(new Student()
-                    {
-                        FirstName = studentModel.FirstName,
-                        LastName = studentModel.LastName,
-                        Email = studentModel.Email
-                    });
-                    UnitOfWork.Commit();
-                    return RedirectToAction("ManageStudents");
-                }
+                return View("NewStudent", studentModel);
             }
+
+            if (!Students.GetAll().Any(s => s.Email == studentModel.Email))
+            {
+                Students.Add(new Student()
+                {
+                    FirstName = studentModel.FirstName,
+                    LastName = studentModel.LastName,
+                    Email = studentModel.Email
+                });
+                UnitOfWork.Commit();
+                return RedirectToAction("ManageStudents");
+            }
+
+            ModelState.AddModelError("Error", "User already exists");
+
             return View("NewStudent", studentModel);
         }
-        
+
         [HttpGet]
         public ActionResult NewStudent()
         {
-            return View(new StudentModel());
+            return View();
         }
     }
 }
