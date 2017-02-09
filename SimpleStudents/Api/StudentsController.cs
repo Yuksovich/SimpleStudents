@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Data.Repositories;
+using SimpleStudents.Web.Models.Students;
 
 namespace SimpleStudents.Web.Api
 {
@@ -27,6 +28,19 @@ namespace SimpleStudents.Web.Api
                 Thread.Sleep(2000);
             }
             return Students.GetAll().Select(s => s.Email).ToList();
+        }
+
+        //GET
+        public IEnumerable<StudentModel> GetStudents()
+        {
+            return Students.GetAll().Select(s => new StudentModel()
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                Email = s.Email,
+                AvarageMark = s.Descriptions.Average(a=>a.Mark)
+            });
         }
     }
 }
