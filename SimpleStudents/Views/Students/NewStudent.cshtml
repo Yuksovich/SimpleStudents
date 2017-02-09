@@ -9,18 +9,18 @@
     @Html.ValidationSummary(false, "Please fix the following errors")
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.FirstName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
-        <img id="loader" style="display: none" src="~/content/images/spinner.gif"/>
-        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", id = "email"})
+        <img id="loader" style="display: none" src="~/content/images/spinner.gif" />
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "email" })
         <div id="email-validation"></div>
         @Html.ValidationMessageFor(m => m.Email)
     </div>
@@ -32,11 +32,11 @@
     <script>
         $(document).ready(function() {
             $('#email').keyup(function(key) {
-                var inputedEmail = $('#email').val();
+                var inputedEmail = $('#email').val()
                 checkEmail(inputedEmail);
             });
             $('#email').change(function() {
-                var inputedEmail = $('#email').val();
+                var inputedEmail = $('#email').val()
                 checkEmail(inputedEmail);
             });
         });
@@ -45,9 +45,15 @@
             var timeoutId;
             $.ajax({
                 type: "GET",
-                url: "/api/students",
+                url: "/api/students/getemails",
                 beforeSend: function() {
                     timeoutId = setTimeout(function() { showProgress(true); }, 500);
+                },
+                timeout: 5000,
+                error: function (jqXHR, textStatus, errorThrown) {
+                    clearTimeout(timeoutId);
+                    showProgress(false);
+                    $('#email-validation').html("An error occured: "+errorThrown);
                 },
                 success: function(emails) {
                     clearTimeout(timeoutId);
