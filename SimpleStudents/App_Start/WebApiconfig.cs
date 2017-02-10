@@ -14,7 +14,7 @@ namespace SimpleStudents.Web
             config.Routes.MapHttpRoute(
                 name: "Custom",
                 routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new {id = RouteParameter.Optional}
+                defaults: new { id = RouteParameter.Optional }
                 );
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

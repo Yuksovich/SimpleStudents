@@ -30,36 +30,44 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function() {
-            $('#email').keyup(function(key) {
+        $(document).ready(function ()
+        {
+            $('#email').keyup(function (key)
+            {
                 var inputedEmail = $('#email').val()
                 checkEmail(inputedEmail);
             });
-            $('#email').change(function() {
+            $('#email').change(function ()
+            {
                 var inputedEmail = $('#email').val()
                 checkEmail(inputedEmail);
             });
         });
 
-        function checkEmail(inputedEmail) {
+        function checkEmail(inputedEmail)
+        {
             var timeoutId;
             $.ajax({
                 type: "GET",
                 url: "/api/students/getemails",
-                beforeSend: function() {
-                    timeoutId = setTimeout(function() { showProgress(true); }, 500);
+                beforeSend: function ()
+                {
+                    timeoutId = setTimeout(function () { showProgress(true); }, 500);
                 },
                 timeout: 5000,
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown)
+                {
                     clearTimeout(timeoutId);
                     showProgress(false);
-                    $('#email-validation').html("An error occured: "+errorThrown);
+                    $('#email-validation').html("An error occured: " + errorThrown);
                 },
-                success: function(emails) {
+                success: function (emails)
+                {
                     clearTimeout(timeoutId);
                     showProgress(false);
                     var found = false;
-                    emails.forEach(function(email, i, arr) {
+                    emails.forEach(function (email, i, arr)
+                    {
                         if (inputedEmail === email)
                             found = true;
                     });
@@ -71,8 +79,10 @@
             });
         }
 
-        function showProgress(isShow) {
+        function showProgress(isShow)
+        {
             $("#loader").toggle(isShow);
         }
+
     </script>
 }
