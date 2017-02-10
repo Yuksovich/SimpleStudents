@@ -12,6 +12,8 @@ namespace SimpleStudents.Web
                         "~/Scripts/underscore.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/DataTables/jquery.datatables.js",
+                        "~/Scripts/DataTables/datatables.bootstrap.js",
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,6 +29,7 @@ namespace SimpleStudents.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/DataTables/css/datatables.bootstrap.css",
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css"));
         }

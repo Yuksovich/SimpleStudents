@@ -6,27 +6,40 @@
 
 <h2>Students</h2>
 
-<div class="body-content">
-    <table class="table tab-content">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>E-mail</th>
-                <th>Avarage mark</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var studentModel in Model)
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-mail</th>
+            <th>Avarage mark</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var studentModel in Model)
             {
-                <tr>
-                    <td>@(studentModel.FirstName)</td>
-                    <td>@(studentModel.LastName)</td>
-                    <td>@(studentModel.Email)</td>
-                    <td>@(studentModel.AvarageMark)</td>
-                </tr>
-            }
-    </table>
+            <tr>
+                <td>@(studentModel.FirstName)</td>
+                <td>@(studentModel.LastName)</td>
+                <td>@(studentModel.Email)</td>
+                <td>@(studentModel.AvarageMark)</td>
+            </tr>
+        }
+</table>
+<div id="tpl-student-list-item">
+    <div id="sidebar">
+    </div>
+    <div id="content"></div>
 </div>
 
-@Html.ActionLink("Add new student", "NewStudent", null, new {@class = "btn btn-primary"})
+@Html.ActionLink("Add new student", "NewStudent", null, new { @class = "btn btn-primary" })
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        $(document).ready(function() {
+            $(".table").DataTable();
+        });
+
+    </script>
+}
