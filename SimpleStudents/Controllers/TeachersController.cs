@@ -21,14 +21,7 @@ namespace SimpleStudents.Web.Controllers
         [HttpGet]
         public ActionResult ManageTeachers()
         {
-            var teachers = Teachers.GetAll().Select(s => new TeacherModel
-            {
-                Id = s.Id,
-                FirstName = s.FirstName,
-                LastName = s.LastName,
-                CoursesNames = s.TeacherCourses.Select(c => c.Course.Name)
-            }).ToList();
-            return View(teachers);
+            return View();
         }
 
         [HttpGet]

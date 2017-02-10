@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SimpleStudents.Data.Infrastructure;
 using SimpleStudents.Data.Repositories;
 using SimpleStudents.Web.Models.Teachers;
 
@@ -12,12 +13,17 @@ namespace SimpleStudents.Web.Api
     public class TeachersController : ApiController
     {
         private ITeacherRepository Teachers { get; }
+        private ITeacherCourseRepository TeacherCourse { get; }
+        private IUnitOfWork UnitOfWork { get; }
 
-        public TeachersController(ITeacherRepository teacherRepository)
+        public TeachersController(ITeacherRepository teacherRepository, ITeacherCourseRepository teacherCourse, IUnitOfWork unitOfWork)
         {
             Teachers = teacherRepository;
+            TeacherCourse = teacherCourse;
+            UnitOfWork = unitOfWork;
         }
         // GET: api/Teachers
+        [HttpGet]
         public IEnumerable<TeacherModel> Get()
         {
             return Teachers.GetAll().Select(s => new TeacherModel()
@@ -47,8 +53,14 @@ namespace SimpleStudents.Web.Api
         }
 
         // DELETE: api/Teachers/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("api/teachers/{id}")]
+        public IHttpActionResult Delete(int id)
         {
+            Teachers.Delete(i => i.Id == id);
+            TeacherCourse.Delete(i => i.TeacherId == id);
+            UnitOfWork.Commit();
+            return Ok();
         }
     }
 }
